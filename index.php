@@ -1,6 +1,5 @@
 <?php
 
-var_dump($_SERVER['REQUEST_URI']);
+$heading = 'Home';
 
-require 'index.view.php';
-// require __DIR__ . '/index.view.php';
+require 'views/index.view.php';
