@@ -23,8 +23,24 @@ class Database
         return $this;
     }
 
-    function find(): object
+    function get()
+    {
+        return $this->statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function find()
     {
         return $this->statement->fetch();
+    }
+
+    function findOrFail()
+    {
+        $result = $this->find();
+
+        if (!$result) {
+            abort();
+        }
+
+        return $result;
     }
 }

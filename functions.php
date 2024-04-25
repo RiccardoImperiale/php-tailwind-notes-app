@@ -11,3 +11,10 @@ function urlIs($value)
     // Check for an exact match between the modified current URL and the provided value
     return $currentUrl === $value;
 }
+
+function authorize($condition, $status = Response::FORBIDDEN): void
+{
+    if (!$condition) {
+        abort($status);
+    }
+}
