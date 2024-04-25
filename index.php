@@ -1,14 +1,21 @@
 <?php
 require 'functions.php';
 
-$heading = 'Home';
-$uri = $_SERVER['REQUEST_URI'];
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
+// parse_url() parse a URL and return path and query 
 
-if ($uri === '/laracast/php-for-beginner/') {
-    require 'views/index.view.php';
-} else if ($uri === '/laracast/php-for-beginner/about') {
-    require 'views/about.view.php';
-} else if ($uri === '/laracast/php-for-beginner/contact') {
-    require 'views/contact.view.php';
+$routes = [
+    '/laracast/php-for-beginner/' => 'controllers/index.php',
+    '/laracast/php-for-beginner/about' => 'controllers/about.php',
+    '/laracast/php-for-beginner/contact' => 'controllers/contact.php',
+];
+
+if (array_key_exists($uri, $routes)) {
+    require $routes[$uri];
+} else {
+    http_response_code(404);
+    require 'views/404.php';
+
+    die();
 }
