@@ -2,7 +2,7 @@
 
 require 'functions.php';
 require 'Database.php';
-// require 'router.php';
+require 'router.php';
 
 $config = require 'config.php';
 
@@ -16,8 +16,8 @@ $id = $_GET['id'];
 // $post = $db->query($query, [$id])->fetch();
 
 // :key way
-$query = "SELECT * FROM posts WHERE id = :id";
-$post = $db->query($query, [':id' => $id])->fetch();
+// $query = "SELECT * FROM posts WHERE id = :id";
+// $post = $db->query($query, [':id' => $id])->fetch();
 // $posts = $db->query($query)->fetchAll(PDO::FETCH_ASSOC); // format result into assoc array to remove indexes
 
 var_dump($post);

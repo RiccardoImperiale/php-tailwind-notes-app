@@ -1,15 +1,15 @@
 <?php
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
 // parse_url() parse a URL and return path and query 
+$base_url = '/laracast/php-for-beginner';
 
 $routes = [
-    '/laracast/php-for-beginner/' => 'controllers/index.php',
-    '/laracast/php-for-beginner/about' => 'controllers/about.php',
-    '/laracast/php-for-beginner/contact' => 'controllers/contact.php',
+    "$base_url/" => 'controllers/index.php',
+    "$base_url/about" => 'controllers/about.php',
+    "$base_url/notes" => 'controllers/notes.php',
+    "$base_url/contact" => 'controllers/contact.php',
 ];
-
 
 function routeToController($uri, $routes)
 {
