@@ -4,11 +4,14 @@ class Database
 {
     public $connection;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $dsn = "mysql:host=localhost;port=8889;dbname=php_tailwind_app;user=root;password=root;charset=utf8mb4";
+        // $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
+        $dsn = 'mysql:' . http_build_query($config, '', ';'); // shorter way
 
-        $this->connection = new PDO($dsn);
+        $this->connection = new PDO($dsn, 'root', 'root', [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
     }
 
     public function query($query): object
