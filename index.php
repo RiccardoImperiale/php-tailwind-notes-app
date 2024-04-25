@@ -10,10 +10,12 @@ $db = new Database($config['database']);
 
 
 $id = $_GET['id'];
-echo $id;
 
-// $posts = $db->query("SELECT * FROM posts")->fetchAll(PDO::FETCH_ASSOC); // format result into assoc array to remove indexes
-$post = $db->query("SELECT * FROM posts WHERE id = 1")->fetch();
+$query = "SELECT * FROM posts WHERE id = ?";
+
+
+// $posts = $db->query($query)->fetchAll(PDO::FETCH_ASSOC); // format result into assoc array to remove indexes
+$post = $db->query($query, [$id])->fetch();
 
 var_dump($post);
 // foreach ($posts as $post) {
