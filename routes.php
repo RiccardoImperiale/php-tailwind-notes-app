@@ -1,6 +1,6 @@
 <?php
 
-$base_url = '/laracast/php-for-beginner';
+$base_url = '/laracast/php-for-beginner/public';
 
 return [
     "$base_url/" => 'controllers/index.php',
