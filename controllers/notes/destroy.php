@@ -1,4 +1,5 @@
 <?php
+// remove a note from the db
 
 use Core\App;
 use Core\Database;

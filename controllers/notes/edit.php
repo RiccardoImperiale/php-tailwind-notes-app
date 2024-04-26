@@ -1,5 +1,5 @@
 <?php
-// shows a specific note
+// shows a form to edit the note
 
 use Core\App;
 use Core\Database;
@@ -15,7 +15,8 @@ $note = $db->query('SELECT * FROM notes WHERE id = :id', [
 authorize($note['user_id'] === $currentUserId);
 
 
-view('notes/show.view.php', [
-    'heading' => 'Notes',
+view('notes/edit.view.php', [
+    'heading' => 'Edit Note',
+    'errors' => [],
     'note' => $note
 ]);

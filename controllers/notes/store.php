@@ -1,4 +1,5 @@
 <?php
+// store the note after the form to create a note is submitted
 
 use Core\Validator;
 use Core\Database;
