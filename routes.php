@@ -9,4 +9,6 @@ $router->get(BASE_URL . '/contact', 'controllers/contact.php');
 $router->get(BASE_URL . '/notes', 'controllers/notes/index.php');
 $router->get(BASE_URL . '/note', 'controllers/notes/show.php');
 $router->delete(BASE_URL . '/note', 'controllers/notes/destroy.php');
+
 $router->get(BASE_URL . '/notes/create', 'controllers/notes/create.php');
+$router->post(BASE_URL . '/notes', 'controllers/notes/store.php');
