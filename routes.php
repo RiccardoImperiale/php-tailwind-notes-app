@@ -1,6 +1,7 @@
 <?php
 
-const BASE_URL = '/notes-app/public';
+$config = require 'config.php';
+define('BASE_URL', $config['app']['BASE_URL']);
 
 $router->get(BASE_URL . '/', 'controllers/index.php');
 $router->get(BASE_URL . '/about', 'controllers/about.php');
