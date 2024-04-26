@@ -1,10 +1,11 @@
 <?php
 
+use Core\Response;
+
 function urlIs($value)
 {
-    // Remove the prefix '/laracast/php-for-beginner' from the current URL
     $currentUrl = $_SERVER['REQUEST_URI'];
-    $prefix = '/laracast/php-for-beginner';
+    $prefix = '/notes-app';
     if (strpos($currentUrl, $prefix) === 0) {
         $currentUrl = substr($currentUrl, strlen($prefix));
     }
