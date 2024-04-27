@@ -32,7 +32,7 @@ $user = $db->query('SELECT * FROM users WHERE email = :email', [
 
 if ($user) {
     // if yes redirect to login page
-    header('location: /');
+    header('location: ./');
     exit();
 } else {
     // if not save one to the database and then log the user in and then redirect
@@ -46,6 +46,6 @@ if ($user) {
         'email' => $email
     ];
 
-    header('location: /');
+    header('location: ./');
     exit();
 }
