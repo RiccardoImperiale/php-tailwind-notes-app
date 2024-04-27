@@ -7,7 +7,7 @@ $router->get(BASE_URL . '/', 'controllers/index.php');
 $router->get(BASE_URL . '/about', 'controllers/about.php');
 $router->get(BASE_URL . '/contact', 'controllers/contact.php');
 
-$router->get(BASE_URL . '/notes', 'controllers/notes/index.php');
+$router->get(BASE_URL . '/notes', 'controllers/notes/index.php')->only('auth');
 $router->get(BASE_URL . '/note', 'controllers/notes/show.php');
 $router->delete(BASE_URL . '/note', 'controllers/notes/destroy.php');
 
@@ -17,5 +17,5 @@ $router->patch(BASE_URL . '/note', 'controllers/notes/update.php');
 $router->get(BASE_URL . '/notes/create', 'controllers/notes/create.php');
 $router->post(BASE_URL . '/notes', 'controllers/notes/store.php');
 
-$router->get(BASE_URL . '/register', 'controllers/registration/create.php');
+$router->get(BASE_URL . '/register', 'controllers/registration/create.php')->only('guest');
 $router->post(BASE_URL . '/register', 'controllers/registration/store.php');
