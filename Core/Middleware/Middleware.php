@@ -6,7 +6,7 @@ class Middleware
 {
     public const MAP = [
         'guest' => Guest::class,
-        'auth' => Authenticated::class
+        'auth' => Auth::class
     ];
 
     public static function resolve($key)
@@ -15,7 +15,7 @@ class Middleware
             return;
         }
 
-        $middleware = static::MAP[$key] ?? false;
+        $middleware = self::MAP[$key] ?? false;
 
         if (!$middleware) {
             throw new \Exception("No matching middleware found for key '{$key}'.");
