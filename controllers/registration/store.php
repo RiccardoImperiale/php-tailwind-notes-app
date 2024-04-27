@@ -44,10 +44,10 @@ if ($user) {
     ]);
 
     //mark that the user has logged in
-    // login([
-    //     'email' => $email
-    // ]);
-    login($user);
+    login([
+        'email' => $email
+    ]);
+    // login($user);
 
     header('location: ./');
     exit();
