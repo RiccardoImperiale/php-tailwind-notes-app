@@ -19,3 +19,6 @@ $router->post(BASE_URL . '/notes', 'controllers/notes/store.php');
 
 $router->get(BASE_URL . '/register', 'controllers/registration/create.php')->only('guest');
 $router->post(BASE_URL . '/register', 'controllers/registration/store.php');
+
+$router->get(BASE_URL . '/login', 'controllers/sessions/create.php')->only('guest');
+$router->post(BASE_URL . '/login', 'controllers/sessions/store.php')->only('guest');

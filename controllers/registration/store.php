@@ -4,8 +4,11 @@ use Core\Validator;
 use Core\Database;
 use Core\App;
 
+$db = App::resolve(Database::class);
+
 $email = $_POST['email'];
 $password = $_POST['password'];
+
 
 // validate the form input
 $errors = [];
@@ -24,16 +27,12 @@ if (!empty($errors)) {
     ]);
 }
 
-$db = App::resolve(Database::class);
 // check if the account already exists
 $user = $db->query('SELECT * FROM users WHERE email = :email', [
     ':email' => $email
 ])->find();
 
 if ($user) {
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
     // if yes redirect to login page
     header('location: ./');
     exit();
@@ -45,9 +44,10 @@ if ($user) {
     ]);
 
     //mark that the user has logged in
-    $_SESSION['user'] = [
-        'email' => $email
-    ];
+    // login([
+    //     'email' => $email
+    // ]);
+    login($user);
 
     header('location: ./');
     exit();
