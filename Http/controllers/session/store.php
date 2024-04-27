@@ -16,10 +16,9 @@ if ($form->validate($email, $password)) {
         redirect('./');
     }
 
-    $form->errors('email',  'No matching account found for that email address and password.');
+    $form->error('email',  'No matching account found for that email address and password.');
 };
 
+$_SESSION['errors'] = $form->errors();
 
-return view('session/create.view.php', [
-    'errors' => $form->errors()
-]);
+return redirect('./login');
