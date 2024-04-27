@@ -60,6 +60,14 @@ class Router
                         exit();
                     }
                 }
+
+                if ($route['middleware'] === 'auth') {
+                    if (!$_SESSION['user'] ?? false) {
+                        header('location: ./');
+                        exit();
+                    }
+                }
+
                 return require base_path($route['controller']);
             }
         }
