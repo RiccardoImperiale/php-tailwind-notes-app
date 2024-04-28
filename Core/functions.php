@@ -49,3 +49,12 @@ function old($key, $default = '')
 {
     return Core\Session::get('old')[$key] ?? $default;
 }
+
+function currentUserId($db)
+{
+    $currentUser = $_SESSION['user']['email'];
+
+    return $db->query('SELECT id FROM users WHERE email = :currentUser', [
+        ':currentUser' => $currentUser
+    ])->find()['id'];
+}
