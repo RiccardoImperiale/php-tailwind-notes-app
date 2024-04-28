@@ -7,6 +7,13 @@ use Core\App;
 
 $db = App::resolve(Database::class);
 
+
+$currentUser = $_SESSION['user']['email'];
+
+$currentId = $db->query('SELECT id FROM users WHERE email = :currentUser', [
+    ':currentUser' => $currentUser
+])->find();
+
 $errors = [];
 
 if (!Validator::string($_POST['body'], 1, 500)) {
@@ -22,7 +29,7 @@ if (!empty($errors)) {
 
 $db->query('INSERT INTO notes(body, user_id) VALUES(:body, :user_id)', [
     ':body' => $_POST['body'],
-    ':user_id' => 1
+    ':user_id' => $currentId['id']
 ]);
 
 header('location: ./notes');
