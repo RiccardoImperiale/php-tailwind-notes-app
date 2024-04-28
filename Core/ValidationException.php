@@ -4,8 +4,8 @@ namespace Core;
 
 class ValidationException extends \Exception
 {
-    protected $errors = [];
-    protected $old = [];
+    public readonly array $errors;
+    public readonly array $old;
 
     public static function throw($errors, $old)
     {

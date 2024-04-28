@@ -5,7 +5,6 @@ use Core\Session;
 use Core\ValidationException;
 use Http\Forms\LoginForm;
 
-
 try {
     $form = LoginForm::validate($attributes = [
         'email' =>  $_POST['email'],
@@ -13,10 +12,9 @@ try {
     ]);
 } catch (ValidationException $exception) {
 
-    Session::flash('errors', $form->errors());
-    Session::flash('old', [
-        'email' =>  $attributes['email']
-    ]);
+    Session::flash('errors', $exception->errors);
+    Session::flash('old', $exception->old);
+
     return redirect('./login');
 }
 
